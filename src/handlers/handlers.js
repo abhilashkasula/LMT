@@ -30,4 +30,11 @@ const getBooks = async (req, res) => {
   res.send(JSON.stringify(books));
 };
 
-module.exports = { studentLogin, adminLogin, getBooks };
+const getStudentBooks = async (req, res) => {
+  const { id } = req.cookies;
+  const query = `select * from ${TABLES.BOOKS} where assignedTo="${id}";`;
+  const books = await executeQuery(query);
+  res.send(JSON.stringify(books));
+};
+
+module.exports = { studentLogin, adminLogin, getBooks, getStudentBooks };

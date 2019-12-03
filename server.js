@@ -22,6 +22,7 @@ app.post("/student-login", handlers.studentLogin);
 app.post("/admin-login", handlers.adminLogin);
 
 app.get("/books", handlers.getBooks);
+app.get("/studentBooks", handlers.getStudentBooks);
 
 app.get("*", (req, res) => {
   res.render("index.html");
