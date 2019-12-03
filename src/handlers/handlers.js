@@ -26,7 +26,6 @@ const adminLogin = async (req, res) => {
 const getBooks = async (req, res) => {
   const query = `select * from ${TABLES.BOOKS}`;
   const books = await executeQuery(query);
-  console.log(books);
   res.send(JSON.stringify(books));
 };
 
@@ -44,10 +43,18 @@ const addBook = async (req, res) => {
   res.redirect("/admin-home");
 };
 
+const assignBook = async (req, res) => {
+  const { id, bookId } = req.body;
+  const query = `update ${TABLES.BOOKS} set assignedTo="${id}" where id=${bookId};`;
+  await executeQuery(query);
+  res.redirect("/admin-home");
+};
+
 module.exports = {
   studentLogin,
   adminLogin,
   getBooks,
   getStudentBooks,
-  addBook
+  addBook,
+  assignBook
 };

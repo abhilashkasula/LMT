@@ -21,6 +21,7 @@ app.set("view engine", "html");
 app.post("/student-login", handlers.studentLogin);
 app.post("/admin-login", handlers.adminLogin);
 app.post("/add-book", handlers.addBook);
+app.post("/assign-book", handlers.assignBook);
 
 app.get("/books", handlers.getBooks);
 app.get("/studentBooks", handlers.getStudentBooks);

@@ -31,7 +31,26 @@ class AdminHome extends React.Component {
           <input type="submit" value="Add Book" />
         </form>
         {this.state.books.map(book => {
-          return <div>{book.name}</div>;
+          return (
+            <div>
+              <h2>{book.name}</h2>
+              <h3>{book.id}</h3>
+              {book.assignedTo === "none" ? (
+                <form method="POST" action="/assign-book">
+                  <input type="text" name="id" placeholder="student id" />
+                  <input
+                    type="text"
+                    name="bookId"
+                    value={book.id}
+                    hidden={true}
+                  />
+                  <input type="submit" value="Assign Book" />
+                </form>
+              ) : (
+                <div>{`Assigned to ${book.assignedTo}`}</div>
+              )}
+            </div>
+          );
         })}
       </div>
     );
