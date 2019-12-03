@@ -1,6 +1,6 @@
-const TABELS = {
+const TABLES = {
   ADMIN: "library_admin",
-  STUDENT: "library_students",
+  STUDENTS: "library_students",
   BOOKS: "library_books"
 };
 
@@ -9,6 +9,6 @@ const LABELS = {
 };
 
 module.exports = {
-  TABELS,
+  TABLES,
   LABELS
 };
