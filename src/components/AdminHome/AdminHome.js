@@ -1,5 +1,7 @@
 import React from "react";
 
+const NOT_ASSIGNED = "none";
+
 class AdminHome extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +22,20 @@ class AdminHome extends React.Component {
     await this.loadBooks();
   }
 
+  renderAssignBookOption(book) {
+    return (
+      <form method="POST" action="/assign-book">
+        <input type="text" name="id" placeholder="student id" />
+        <input type="text" name="bookId" value={book.id} hidden={true} />
+        <input type="submit" value="Assign Book" />
+      </form>
+    );
+  }
+
+  renderAlreadyAssigned(book) {
+    return <div>{`Assigned to ${book.assignedTo}`}</div>;
+  }
+
   render() {
     return (
       <div>
@@ -35,20 +51,9 @@ class AdminHome extends React.Component {
             <div>
               <h2>{book.name}</h2>
               <h3>{book.id}</h3>
-              {book.assignedTo === "none" ? (
-                <form method="POST" action="/assign-book">
-                  <input type="text" name="id" placeholder="student id" />
-                  <input
-                    type="text"
-                    name="bookId"
-                    value={book.id}
-                    hidden={true}
-                  />
-                  <input type="submit" value="Assign Book" />
-                </form>
-              ) : (
-                <div>{`Assigned to ${book.assignedTo}`}</div>
-              )}
+              {book.assignedTo === NOT_ASSIGNED
+                ? this.renderAssignBookOption(book)
+                : this.renderAlreadyAssigned(book)}
             </div>
           );
         })}
