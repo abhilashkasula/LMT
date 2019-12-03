@@ -50,11 +50,19 @@ const assignBook = async (req, res) => {
   res.redirect("/admin-home");
 };
 
+const returnBook = async (req, res) => {
+  const { id } = req.body;
+  const query = `update ${TABLES.BOOKS} set assignedTo="none" where id=${id};`;
+  await executeQuery(query);
+  res.redirect("/student-home");
+};
+
 module.exports = {
   studentLogin,
   adminLogin,
   getBooks,
   getStudentBooks,
   addBook,
-  assignBook
+  assignBook,
+  returnBook
 };

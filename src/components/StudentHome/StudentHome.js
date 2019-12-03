@@ -9,7 +9,7 @@ class AdminHome extends React.Component {
   }
 
   async loadBooks() {
-    await fetch("/studentBooks", { method: "GET" })
+    await fetch("/student-books", { method: "GET" })
       .then(res => res.json())
       .then(res => {
         this.setState({ books: res });
@@ -34,7 +34,15 @@ class AdminHome extends React.Component {
           <input type="submit" value="Search Book" />
         </form>
         {this.state.books.map(book => {
-          return <div>{book.name}</div>;
+          return (
+            <div>
+              <h2>{book.name}</h2>
+              <form method="POST" action="/return-book">
+                <input type="text" name="id" value={book.id} hidden={true} />
+                <input type="submit" value="Return" />
+              </form>
+            </div>
+          );
         })}
       </div>
     );
