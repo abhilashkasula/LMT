@@ -23,4 +23,11 @@ const adminLogin = async (req, res) => {
   return res.send(LABELS.LOGIN_ERROR);
 };
 
-module.exports = { studentLogin, adminLogin };
+const getBooks = async (req, res) => {
+  const query = `select * from ${TABLES.BOOKS}`;
+  const books = await executeQuery(query);
+  console.log(books);
+  res.send(JSON.stringify(books));
+};
+
+module.exports = { studentLogin, adminLogin, getBooks };
