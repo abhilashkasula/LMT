@@ -4,7 +4,7 @@ const StudentHome = () => {
   return (
     <div>
       <h1>Student Ka home</h1>
-      <form method="GET">
+      <form method="GET" action="/student-login">
         <input
           type="text"
           name="bookName"
