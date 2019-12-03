@@ -1,5 +1,9 @@
 import React from "react";
 
+const SEARCH_BOOK_LABEL = "Search By Book Name / Book Id";
+const SEARCH_BOOK = "Search Book";
+const RETURN_BOOK = "RETURN";
+const STUDENT_HOME_TITLE = "Student Home";
 class AdminHome extends React.Component {
   constructor(props) {
     super(props);
@@ -20,29 +24,45 @@ class AdminHome extends React.Component {
     await this.loadBooks();
   }
 
+  renderSearchBook() {
+    return (
+      <form method="GET" action="/student-login">
+        <input
+          type="text"
+          name="bookName"
+          placeholder={SEARCH_BOOK_LABEL}
+          required
+        />
+        <input type="submit" value={SEARCH_BOOK} />
+      </form>
+    );
+  }
+
+  renderReturnBook(book) {
+    return (
+      <form method="POST" action="/return-book">
+        <input type="text" name="id" value={book.id} hidden={true} />
+        <input type="submit" value={RETURN_BOOK} />
+      </form>
+    );
+  }
+
+  renderBook(book) {
+    return (
+      <div>
+        <h2>{book.name}</h2>
+        {this.renderReturnBook(book)}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div>
-        <h1>Student Ka home</h1>
-        <form method="GET" action="/student-login">
-          <input
-            type="text"
-            name="bookName"
-            placeholder="Search By Book Name / Book Id"
-            required
-          />
-          <input type="submit" value="Search Book" />
-        </form>
+        <h1>{STUDENT_HOME_TITLE}</h1>
+        {this.renderSearchBook()}
         {this.state.books.map(book => {
-          return (
-            <div>
-              <h2>{book.name}</h2>
-              <form method="POST" action="/return-book">
-                <input type="text" name="id" value={book.id} hidden={true} />
-                <input type="submit" value="Return" />
-              </form>
-            </div>
-          );
+          return this.renderBook(book);
         })}
       </div>
     );
