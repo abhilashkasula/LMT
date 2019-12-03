@@ -8,7 +8,10 @@ class AdminHome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      libraryBooks: [],
+      searchResult: [],
+      searchTerm: ""
     };
   }
 
@@ -20,21 +23,38 @@ class AdminHome extends React.Component {
       });
   }
 
+  async loadLibraryBooks() {
+    await fetch("/books", { method: "GET" })
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ libraryBooks: res });
+      });
+  }
+
   async componentDidMount() {
     await this.loadBooks();
+    await this.loadLibraryBooks();
+  }
+
+  searchBook() {
+    const books = this.state.libraryBooks.filter(book =>
+      book.name.includes(this.state.searchTerm)
+    );
+    this.setState({ searchResult: books });
   }
 
   renderSearchBook() {
     return (
-      <form method="GET" action="/student-login">
+      <div>
         <input
           type="text"
           name="bookName"
           placeholder={SEARCH_BOOK_LABEL}
+          onChange={e => this.setState({ searchTerm: e.target.value })}
           required
         />
-        <input type="submit" value={SEARCH_BOOK} />
-      </form>
+        <button onClick={this.searchBook.bind(this)}>{SEARCH_BOOK}</button>
+      </div>
     );
   }
 
@@ -56,6 +76,30 @@ class AdminHome extends React.Component {
     );
   }
 
+  renderLibraryBook(book) {
+    return (
+      <div>
+        <h2>{book.name}</h2>
+        <h3>{book.id}</h3>
+        <h4>{book.assignedTo}</h4>
+      </div>
+    );
+  }
+
+  renderBooks(books) {
+    return books.map(book => {
+      return this.renderLibraryBook(book);
+    });
+  }
+
+  renderLibrayBooks() {
+    return this.renderBooks(this.state.libraryBooks);
+  }
+
+  renderSearchResult() {
+    return this.renderBooks(this.state.searchResult);
+  }
+
   render() {
     return (
       <div>
@@ -64,6 +108,8 @@ class AdminHome extends React.Component {
         {this.state.books.map(book => {
           return this.renderBook(book);
         })}
+        {this.renderSearchResult()}
+        {this.renderLibrayBooks()}
       </div>
     );
   }
