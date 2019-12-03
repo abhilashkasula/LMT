@@ -4,6 +4,8 @@ const SEARCH_BOOK_LABEL = "Search By Book Name / Book Id";
 const SEARCH_BOOK = "Search Book";
 const RETURN_BOOK = "RETURN";
 const STUDENT_HOME_TITLE = "Student Home";
+const NO_SEARCH_RESULT = "Sorry ! No search result found.";
+
 class AdminHome extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +13,8 @@ class AdminHome extends React.Component {
       books: [],
       libraryBooks: [],
       searchResult: [],
-      searchTerm: ""
+      searchTerm: "",
+      isSearched: false
     };
   }
 
@@ -40,7 +43,7 @@ class AdminHome extends React.Component {
     const books = this.state.libraryBooks.filter(book =>
       book.name.includes(this.state.searchTerm)
     );
-    this.setState({ searchResult: books });
+    this.setState({ searchResult: books, isSearched: true });
   }
 
   renderSearchBook() {
@@ -54,6 +57,11 @@ class AdminHome extends React.Component {
           required
         />
         <button onClick={this.searchBook.bind(this)}>{SEARCH_BOOK}</button>
+        {this.state.isSearched ? (
+          this.state.searchResult.length ? null : (
+            <h2>{NO_SEARCH_RESULT}</h2>
+          )
+        ) : null}
       </div>
     );
   }
@@ -77,11 +85,12 @@ class AdminHome extends React.Component {
   }
 
   renderLibraryBook(book) {
+    const { name, id, assignedTo } = book;
     return (
       <div>
-        <h2>{book.name}</h2>
-        <h3>{book.id}</h3>
-        <h4>{book.assignedTo}</h4>
+        <h2>{name}</h2>
+        <h3>{id}</h3>
+        <h4>{assignedTo}</h4>
       </div>
     );
   }
