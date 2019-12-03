@@ -24,10 +24,10 @@ class AdminHome extends React.Component {
     return (
       <div>
         <h1>Admin Ka home</h1>
-        <form method="POST">
-          <input type="text" name="bookName" placeholder="Book Name" required />
-          <input type="text" name="bookName" placeholder="Book Id" required />
-          <input type="text" name="bookName" value="none" required />
+        <form method="POST" action="/add-book">
+          <input type="text" name="name" placeholder="Book Name" required />
+          <input type="text" name="id" placeholder="Book Id" required />
+          <input type="text" name="assignedTo" value="none" required />
           <input type="submit" value="Add Book" />
         </form>
         {this.state.books.map(book => {

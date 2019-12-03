@@ -37,4 +37,17 @@ const getStudentBooks = async (req, res) => {
   res.send(JSON.stringify(books));
 };
 
-module.exports = { studentLogin, adminLogin, getBooks, getStudentBooks };
+const addBook = async (req, res) => {
+  const { name, id, assignedTo } = req.body;
+  const query = `insert into ${TABLES.BOOKS} values("${id}", "${name}", "${assignedTo}")`;
+  await executeQuery(query);
+  res.redirect("/admin-home");
+};
+
+module.exports = {
+  studentLogin,
+  adminLogin,
+  getBooks,
+  getStudentBooks,
+  addBook
+};
