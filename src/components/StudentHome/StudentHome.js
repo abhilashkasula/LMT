@@ -59,11 +59,6 @@ class AdminHome extends React.Component {
           required
         />
         <button onClick={this.searchBook.bind(this)}>{SEARCH_BOOK}</button>
-        {this.state.isSearched ? (
-          this.state.searchResult.length ? null : (
-            <h2>{NO_SEARCH_RESULT}</h2>
-          )
-        ) : null}
       </div>
     );
   }
@@ -127,6 +122,11 @@ class AdminHome extends React.Component {
         </div>
         <div className="bookWrapper">
           <p className="searchHeader">{SEARCH_RESULTS}</p>
+          {this.state.isSearched ? (
+            this.state.searchResult.length ? null : (
+              <h2 className="noSearchResultLabel">{NO_SEARCH_RESULT}</h2>
+            )
+          ) : null}
           {this.renderSearchResult()}
         </div>
         <div className="bookWrapper">
