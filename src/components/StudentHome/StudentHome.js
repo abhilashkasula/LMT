@@ -82,13 +82,14 @@ class AdminHome extends React.Component {
     );
   }
 
-  renderLibraryBook(book) {
+  renderLibraryBook(book, isReturnBookVisible = false) {
     const { name, id, assignedTo } = book;
     return (
       <div className="bookInformationContainer">
         <h2>{name}</h2>
         <h3>{id}</h3>
         <h4>{assignedTo}</h4>
+        {isReturnBookVisible ? this.renderReturnBook(book) : null}
       </div>
     );
   }
@@ -112,7 +113,13 @@ class AdminHome extends React.Component {
   }
 
   renderAssignedBooks() {
-    return this.renderBooks(this.state.books);
+    return (
+      <div className="bookShelf">
+        {this.state.books.map(book => {
+          return this.renderLibraryBook(book, true);
+        })}
+      </div>
+    );
   }
 
   render() {
