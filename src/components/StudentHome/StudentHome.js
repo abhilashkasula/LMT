@@ -6,6 +6,7 @@ const RETURN_BOOK = "RETURN";
 const STUDENT_HOME_TITLE = "Student Home";
 const NO_SEARCH_RESULT = "Sorry ! No search result found.";
 const SEARCH_RESULTS = "Search Results";
+const ASSIGNED_BOOKS = "Assigned to you";
 const LIBRARY_BOOKS = "Library Books";
 
 class AdminHome extends React.Component {
@@ -110,15 +111,18 @@ class AdminHome extends React.Component {
     return this.renderBooks(this.state.searchResult);
   }
 
+  renderAssignedBooks() {
+    return this.renderBooks(this.state.books);
+  }
+
   render() {
     return (
       <div>
         <h1 className="header">{STUDENT_HOME_TITLE}</h1>
         {this.renderSearchBook()}
-        <div className="bookShelf">
-          {this.state.books.map(book => {
-            return this.renderBook(book);
-          })}
+        <div className="bookWrapper">
+          <p className="searchHeader">{ASSIGNED_BOOKS}</p>
+          {this.renderAssignedBooks()}
         </div>
         <div className="bookWrapper">
           <p className="searchHeader">{SEARCH_RESULTS}</p>
