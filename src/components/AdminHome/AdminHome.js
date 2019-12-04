@@ -38,7 +38,7 @@ class AdminHome extends React.Component {
 
   renderAddBook() {
     return (
-      <form method="POST" action="/add-book">
+      <form method="POST" action="/add-book" className="addBookSection">
         <input type="text" name="name" placeholder="Book Name" required />
         <input type="text" name="id" placeholder="Book Id" required />
         <input type="text" name="assignedTo" value="none" required />
@@ -50,7 +50,7 @@ class AdminHome extends React.Component {
   renderBook(book) {
     const { name, id } = book;
     return (
-      <div>
+      <div className="bookInformationContainer">
         <h2>{name}</h2>
         <h3>{id}</h3>
         {book.assignedTo === NOT_ASSIGNED
@@ -63,11 +63,13 @@ class AdminHome extends React.Component {
   render() {
     return (
       <div>
-        <h1>{ADMIN_HOME_TITLE}</h1>
+        <h1 className="header">{ADMIN_HOME_TITLE}</h1>
         {this.renderAddBook()}
-        {this.state.books.map(book => {
-          return this.renderBook(book);
-        })}
+        <div className="bookShelf">
+          {this.state.books.map(book => {
+            return this.renderBook(book);
+          })}
+        </div>
       </div>
     );
   }

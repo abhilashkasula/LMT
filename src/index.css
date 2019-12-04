@@ -87,3 +87,29 @@ form > input[type="submit"] {
   align-items: center;
   justify-content: center;
 }
+
+.addBookSection {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.bookInformationContainer {
+  border: 1px solid black;
+  margin: 3px;
+  border-radius: 3px;
+  padding: 10px;
+  width: 20%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookShelf {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
