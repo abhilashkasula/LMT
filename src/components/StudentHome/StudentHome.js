@@ -88,7 +88,7 @@ class AdminHome extends React.Component {
       <div className="bookInformationContainer">
         <h2>{name}</h2>
         <h3>{id}</h3>
-        <h4>{assignedTo}</h4>
+        <h4 className="assignedBook">{`Assigned to ${assignedTo}`}</h4>
         {isReturnBookVisible ? this.renderReturnBook(book) : null}
       </div>
     );
@@ -128,10 +128,6 @@ class AdminHome extends React.Component {
         <h1 className="header">{STUDENT_HOME_TITLE}</h1>
         {this.renderSearchBook()}
         <div className="bookWrapper">
-          <p className="searchHeader">{ASSIGNED_BOOKS}</p>
-          {this.renderAssignedBooks()}
-        </div>
-        <div className="bookWrapper">
           <p className="searchHeader">{SEARCH_RESULTS}</p>
           {this.state.isSearched ? (
             this.state.searchResult.length ? null : (
@@ -139,6 +135,10 @@ class AdminHome extends React.Component {
             )
           ) : null}
           {this.renderSearchResult()}
+        </div>
+        <div className="bookWrapper">
+          <p className="searchHeader">{ASSIGNED_BOOKS}</p>
+          {this.renderAssignedBooks()}
         </div>
         <div className="bookWrapper">
           <p className="searchHeader">{LIBRARY_BOOKS}</p>

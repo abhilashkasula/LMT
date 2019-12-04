@@ -33,7 +33,7 @@ class AdminHome extends React.Component {
   }
 
   renderAlreadyAssigned(book) {
-    return <div>{`Assigned to ${book.assignedTo}`}</div>;
+    return <div className="assignedBook">{`Assigned to ${book.assignedTo}`}</div>;
   }
 
   renderAddBook() {
@@ -41,7 +41,7 @@ class AdminHome extends React.Component {
       <form method="POST" action="/add-book" className="addBookSection">
         <input type="text" name="name" placeholder="Book Name" required />
         <input type="text" name="id" placeholder="Book Id" required />
-        <input type="text" name="assignedTo" value="none" required />
+        <input type="text" name="assignedTo" value="none" required hidden={true} />
         <input type="submit" value="Add Book" />
       </form>
     );

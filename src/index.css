@@ -1,5 +1,6 @@
 body {
   width: 100vw;
+  margin: 10px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -55,21 +56,42 @@ form {
   align-self: center;
 }
 
-form > input {
+form > input[type="text"],
+form > input[type="password"] {
   width: 40%;
   height: 30px;
   margin: 5px;
   align-self: center;
   padding: 4px;
-  border: 1px solid black;
-  border-radius: 3px;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 0px;
+}
+
+form > input[type="text"]:focus,
+form > input[type="password"]:focus {
+  outline: none;
+  border-bottom: 1px solid aqua;
+}
+
+form > input[type="text"]::placeholder,
+form > input[type="password"]::placeholder {
+  text-align: center;
 }
 
 form > input[type="submit"] {
   height: 30px;
   width: 200px;
-  border-radius: 2px;
+  border-radius: 20px;
+  margin: 10px;
+  align-self: center;
   cursor: pointer;
+  background: lightgrey;
+  border: none;
+}
+
+form > input[type="submit"]:focus {
+  outline: none;
 }
 
 .adminLoginContainer {
@@ -92,6 +114,7 @@ form > input[type="submit"] {
   width: 100%;
   display: flex;
   border-bottom: 1px solid black;
+  margin: 0 40px;
 }
 
 .bookInformationContainer {
@@ -112,6 +135,8 @@ form > input[type="submit"] {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 10px;
+  margin: 0 40px;
 }
 
 .searchBookSection {
@@ -119,6 +144,7 @@ form > input[type="submit"] {
   justify-content: center;
   border-bottom: 1px solid black;
   padding: 10px;
+  margin: 0 40px;
 }
 
 input {
@@ -133,6 +159,7 @@ input {
 .bookWrapper {
   border-bottom: 1px solid black;
   margin: 5px 0;
+  margin: 0 40px;
 }
 
 .searchHeader {
@@ -149,4 +176,15 @@ button {
 
 .noSearchResultLabel {
   text-align: center;
+}
+
+h4 {
+  margin: 0;
+}
+
+.assignedBook {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 3px;
+  background: whitesmoke;
 }
