@@ -5,6 +5,8 @@ const SEARCH_BOOK = "Search Book";
 const RETURN_BOOK = "RETURN";
 const STUDENT_HOME_TITLE = "Student Home";
 const NO_SEARCH_RESULT = "Sorry ! No search result found.";
+const SEARCH_RESULTS = "Search Results";
+const LIBRARY_BOOKS = "Library Books";
 
 class AdminHome extends React.Component {
   constructor(props) {
@@ -48,7 +50,7 @@ class AdminHome extends React.Component {
 
   renderSearchBook() {
     return (
-      <div>
+      <div className="searchBookSection">
         <input
           type="text"
           name="bookName"
@@ -87,7 +89,7 @@ class AdminHome extends React.Component {
   renderLibraryBook(book) {
     const { name, id, assignedTo } = book;
     return (
-      <div>
+      <div className="bookInformationContainer">
         <h2>{name}</h2>
         <h3>{id}</h3>
         <h4>{assignedTo}</h4>
@@ -96,9 +98,13 @@ class AdminHome extends React.Component {
   }
 
   renderBooks(books) {
-    return books.map(book => {
-      return this.renderLibraryBook(book);
-    });
+    return (
+      <div className="bookShelf">
+        {books.map(book => {
+          return this.renderLibraryBook(book);
+        })}
+      </div>
+    );
   }
 
   renderLibrayBooks() {
@@ -112,13 +118,21 @@ class AdminHome extends React.Component {
   render() {
     return (
       <div>
-        <h1>{STUDENT_HOME_TITLE}</h1>
+        <h1 className="header">{STUDENT_HOME_TITLE}</h1>
         {this.renderSearchBook()}
-        {this.state.books.map(book => {
-          return this.renderBook(book);
-        })}
-        {this.renderSearchResult()}
-        {this.renderLibrayBooks()}
+        <div className="bookShelf">
+          {this.state.books.map(book => {
+            return this.renderBook(book);
+          })}
+        </div>
+        <div className="bookWrapper">
+          <p className="searchHeader">{SEARCH_RESULTS}</p>
+          {this.renderSearchResult()}
+        </div>
+        <div className="bookWrapper">
+          <p className="searchHeader">{LIBRARY_BOOKS}</p>
+          {this.renderLibrayBooks()}
+        </div>
       </div>
     );
   }

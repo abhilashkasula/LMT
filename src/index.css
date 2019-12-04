@@ -113,3 +113,36 @@ form > input[type="submit"] {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.searchBookSection {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+input {
+  height: 35px;
+  width: 50%;
+  padding: 4px;
+  border-radius: 3px;
+  border: 1px solid black;
+  margin-right: 3px;
+}
+
+.bookWrapper {
+  border-bottom: 1px solid black;
+  margin: 5px 0;
+}
+
+.searchHeader {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+button {
+  border: 1px solid black;
+  border-radius: 3px;
+  cursor: pointer;
+}
