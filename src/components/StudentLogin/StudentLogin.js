@@ -1,13 +1,22 @@
 import React from "react";
 
+const STUDENT_LOGIN = "Student Login";
+
 const StudentLogin = () => {
   return (
-    <form method="POST" action="/student-login">
-      <h1>Student Login</h1>
-      <input type="text" name="id" />
-      <input type="password" name="password" />
-      <input type="submit" />
-    </form>
+    <div className="adminLoginContainer">
+      <h1 className="header">{STUDENT_LOGIN}</h1>
+      <form
+        method="POST"
+        action="/student-login"
+        autoComplete="off"
+        className="loginForm"
+      >
+        <input type="text" name="id" placeholder="username" />
+        <input type="password" name="password" placeholder="password" />
+        <input type="submit" value="Login" />
+      </form>
+    </div>
   );
 };
 

@@ -1,8 +1,89 @@
 body {
+  width: 100vw;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+.loginOptionContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  align-self: center;
+  height: 50vh;
+}
+
+.option {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background: whitesmoke;
+  border-radius: 3px;
+  width: 70%;
+  margin: 10px 0;
+  align-self: center;
+}
+
+.homeScreenOptions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-self: center;
+}
+
+form > input {
+  width: 40%;
+  height: 30px;
+  margin: 5px;
+  align-self: center;
+  padding: 4px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+form > input[type="submit"] {
+  height: 30px;
+  width: 200px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.adminLoginContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm {
+  width: 50%;
+  align-self: center;
+  display: flex;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
