@@ -33,7 +33,13 @@ class AdminHome extends React.Component {
   }
 
   renderAlreadyAssigned(book) {
-    return <div className="assignedBook">{`Assigned to ${book.assignedTo}`}</div>;
+    return (
+      <div className="assignedBook">{`Assigned to ${book.assignedTo}`}</div>
+    );
+  }
+
+  logout() {
+    window.location.assign("/");
   }
 
   renderAddBook() {
@@ -41,7 +47,13 @@ class AdminHome extends React.Component {
       <form method="POST" action="/add-book" className="addBookSection">
         <input type="text" name="name" placeholder="Book Name" required />
         <input type="text" name="id" placeholder="Book Id" required />
-        <input type="text" name="assignedTo" value="none" required hidden={true} />
+        <input
+          type="text"
+          name="assignedTo"
+          value="none"
+          required
+          hidden={true}
+        />
         <input type="submit" value="Add Book" />
       </form>
     );
@@ -63,7 +75,10 @@ class AdminHome extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="header">{ADMIN_HOME_TITLE}</h1>
+        <div>
+          <h1 className="header">{ADMIN_HOME_TITLE}</h1>
+          <button onClick={this.logout}>Logout</button>
+        </div>
         {this.renderAddBook()}
         <div className="bookShelf">
           {this.state.books.map(book => {

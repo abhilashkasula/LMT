@@ -42,6 +42,10 @@ class AdminHome extends React.Component {
     await this.loadLibraryBooks();
   }
 
+  logout() {
+    window.location.assign("/");
+  }
+
   searchBook() {
     const books = this.state.libraryBooks.filter(book =>
       book.name.includes(this.state.searchTerm)
@@ -125,7 +129,10 @@ class AdminHome extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="header">{STUDENT_HOME_TITLE}</h1>
+        <div>
+          <h1 className="header">{STUDENT_HOME_TITLE}</h1>
+          <button onClick={this.logout}>Logout</button>
+        </div>
         {this.renderSearchBook()}
         <div className="bookWrapper">
           <p className="searchHeader">{SEARCH_RESULTS}</p>
