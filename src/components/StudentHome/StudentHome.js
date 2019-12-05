@@ -131,7 +131,9 @@ class AdminHome extends React.Component {
       <div>
         <div>
           <h1 className="header">{STUDENT_HOME_TITLE}</h1>
-          <button onClick={this.logout}>Logout</button>
+          <button onClick={this.logout} className="logout-button">
+            Logout
+          </button>
         </div>
         {this.renderSearchBook()}
         <div className="bookWrapper">
