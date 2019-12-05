@@ -45,6 +45,13 @@ const addBook = async (req, res) => {
 
 const assignBook = async (req, res) => {
   const { id, bookId } = req.body;
+  const validateUserQuery = `select * from ${TABLES.STUDENTS} where id="${id}";`;
+  const user = await executeQuery(validateUserQuery);
+
+  if (!user.length) {
+    return res.send("Student not exists");
+  }
+
   const query = `update ${TABLES.BOOKS} set assignedTo="${id}" where id=${bookId};`;
   await executeQuery(query);
   res.redirect("/admin-home");
