@@ -59,6 +59,22 @@ class AdminHome extends React.Component {
     );
   }
 
+  renderAddStudent() {
+    return (
+      <form method="POST" action="/add-student" className="addBookSection">
+        <input type="text" name="id" placeholder="Student ID" required />
+        <input
+          type="text"
+          name="password"
+          value="password"
+          hidden={true}
+          required
+        />
+        <input type="submit" value="Add Student" />
+      </form>
+    );
+  }
+
   renderBook(book) {
     const { name, id } = book;
     return (
@@ -81,7 +97,10 @@ class AdminHome extends React.Component {
             Logout
           </button>
         </div>
-        {this.renderAddBook()}
+        <div className="add-section">
+          {this.renderAddBook()}
+          {this.renderAddStudent()}
+        </div>
         <div className="bookShelf">
           {this.state.books.map(book => {
             return this.renderBook(book);

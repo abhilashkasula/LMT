@@ -133,7 +133,6 @@ form > input[type="submit"]:focus {
 .addBookSection {
   width: 100%;
   display: flex;
-  border-bottom: 1px solid black;
   margin: 0 40px;
 }
 
@@ -220,4 +219,9 @@ h3 {
 .logout-button {
   float: right;
   margin-right: 20px;
+}
+
+.add-section {
+  display: flex;
+  border-bottom: 1px solid black;
 }

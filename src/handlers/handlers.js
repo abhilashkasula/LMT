@@ -64,6 +64,13 @@ const returnBook = async (req, res) => {
   res.redirect("/student-home");
 };
 
+const addStudent = async (req, res) => {
+  const { id, password } = req.body;
+  const query = `insert into ${TABLES.STUDENTS} values("${id}", "${password}");`;
+  await executeQuery(query);
+  res.redirect("/admin-home");
+};
+
 module.exports = {
   studentLogin,
   adminLogin,
@@ -71,5 +78,6 @@ module.exports = {
   getStudentBooks,
   addBook,
   assignBook,
-  returnBook
+  returnBook,
+  addStudent
 };

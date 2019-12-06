@@ -23,6 +23,7 @@ app.post("/admin-login", handlers.adminLogin);
 app.post("/add-book", handlers.addBook);
 app.post("/assign-book", handlers.assignBook);
 app.post("/return-book", handlers.returnBook);
+app.post("/add-student", handlers.addStudent);
 
 app.get("/books", handlers.getBooks);
 app.get("/student-books", handlers.getStudentBooks);
