@@ -42,15 +42,19 @@ class Home extends React.Component {
 	}
 
 	renderLibraryBook(book, filterBook = "Geek Love") {
+		filterBook = filterBook.split(",");
 		const { name } = book;
-		return name === filterBook ? this.renderBook(book) : null;
+		return filterBook.includes(name) ? this.renderBook(book) : null;
+		// return filterBook.forEach(b =>
+		// 	name.includes(b) ? this.renderBook(book) : null
+		// );
 	}
 
 	renderMostReadBooks() {
 		return (
 			<div className="bookShelf">
 				{this.state.libraryBooks.map(book => {
-					return this.renderLibraryBook(book, "Geek Love");
+					return this.renderLibraryBook(book, "Geek Love,Desert Solitaire");
 				})}
 			</div>
 		);
