@@ -9,7 +9,7 @@ const SEARCH_RESULTS = "Search Results";
 const ASSIGNED_BOOKS = "Assigned to you";
 const LIBRARY_BOOKS = "Library Books";
 
-class AdminHome extends React.Component {
+	class AdminHome extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
