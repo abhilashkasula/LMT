@@ -1,5 +1,4 @@
 import React from "react";
-
 const NOT_ASSIGNED = "none";
 const ADMIN_HOME_TITLE = "Admin Home";
 class AdminHome extends React.Component {
@@ -9,7 +8,6 @@ class AdminHome extends React.Component {
       books: []
     };
   }
-
   async loadBooks() {
     await fetch("/books", { method: "GET" })
       .then(res => res.json())
@@ -17,11 +15,9 @@ class AdminHome extends React.Component {
         this.setState({ books: res });
       });
   }
-
   async componentDidMount() {
     await this.loadBooks();
   }
-
   renderAssignBookOption(book) {
     return (
       <form method="POST" action="/assign-book">
@@ -31,17 +27,14 @@ class AdminHome extends React.Component {
       </form>
     );
   }
-
   renderAlreadyAssigned(book) {
     return (
       <div className="assignedBook">{`Assigned to ${book.assignedTo}`}</div>
     );
   }
-
   logout() {
     window.location.assign("/");
   }
-
   renderAddBook() {
     return (
       <form method="POST" action="/add-book" className="addBookSection">
@@ -54,27 +47,28 @@ class AdminHome extends React.Component {
           required
           hidden={true}
         />
+        <input type="text" name="count" placeholder="No. of books" required />
         <input type="submit" value="Add Book" />
       </form>
     );
   }
-
-  renderAddStudent() {
-    return (
-      <form method="POST" action="/add-student" className="addBookSection">
-        <input type="text" name="id" placeholder="Student ID" required />
-        <input
-          type="text"
-          name="password"
-          value="password"
-          hidden={true}
-          required
-        />
-        <input type="submit" value="Add Student" />
-      </form>
-    );
-  }
-
+  // renderAddStudent() {
+  //   return (
+  //     <form method="POST" action="/add-student" className="addBookSection">
+  //       <input type="text" name="id" placeholder="Student ID" required />
+  //       <input
+  //         type="text"
+  //         name="password"
+  //         // value="password"
+  //         // hidden={true}
+  //         placeholder="password"
+  //         minLength="8"
+  //         required
+  //       />
+  //       <input type="submit" value="Add Student" />
+  //     </form>
+  //   );
+  // }
   renderBook(book) {
     const { name, id } = book;
     return (
@@ -87,7 +81,6 @@ class AdminHome extends React.Component {
       </div>
     );
   }
-
   render() {
     return (
       <div>
@@ -99,7 +92,7 @@ class AdminHome extends React.Component {
         </div>
         <div className="add-section">
           {this.renderAddBook()}
-          {this.renderAddStudent()}
+          {/* {this.renderAddStudent()} */}
         </div>
         <div className="bookShelf">
           {this.state.books.map(book => {
@@ -110,5 +103,4 @@ class AdminHome extends React.Component {
     );
   }
 }
-
 export default AdminHome;

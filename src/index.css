@@ -1,5 +1,5 @@
 html {
-  background: whitesmoke;
+  background: #d8e9f3;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -63,8 +63,8 @@ form {
   font-family: "Open Sans", sans-serif;
 }
 
-form > input[type="text"],
-form > input[type="password"] {
+form>input[type="text"],
+form>input[type="password"] {
   width: 60%;
   height: 30px;
   margin: 5px;
@@ -77,18 +77,18 @@ form > input[type="password"] {
   font-family: "Open Sans", sans-serif;
 }
 
-form > input[type="text"]:focus,
-form > input[type="password"]:focus {
+form>input[type="text"]:focus,
+form>input[type="password"]:focus {
   outline: none;
   border-bottom: 1px solid dodgerblue;
 }
 
-form > input[type="text"]::placeholder,
-form > input[type="password"]::placeholder {
+form>input[type="text"]::placeholder,
+form>input[type="password"]::placeholder {
   text-align: center;
 }
 
-form > input[type="submit"] {
+form>input[type="submit"] {
   height: 30px;
   width: 200px;
   border-radius: 2px;
@@ -102,11 +102,11 @@ form > input[type="submit"] {
   font-family: "Open Sans", sans-serif;
 }
 
-form > input[type="submit"]:hover {
+form>input[type="submit"]:hover {
   background: rgb(30, 165, 255);
 }
 
-form > input[type="submit"]:focus {
+form>input[type="submit"]:focus {
   outline: none;
 }
 
@@ -138,7 +138,7 @@ form > input[type="submit"]:focus {
 
 .bookInformationContainer {
   border: 1px solid darkgray;
-  background: white;
+  background: whitesmoke;
   box-shadow: 0px 0px 1px gray;
   margin: 3px;
   border-radius: 3px;

@@ -1,14 +1,14 @@
 const TABLES = {
-  ADMIN: "library_admin",
-  STUDENTS: "library_students",
-  BOOKS: "library_books"
+	ADMIN: "library_admin",
+	STUDENTS: "library_students",
+	BOOKS: "library_books"
 };
 
 const LABELS = {
-  LOGIN_ERROR: "Username or password is incorrect please try again."
+	LOGIN_ERROR: "Username or password is incorrect please try again."
 };
 
 module.exports = {
-  TABLES,
-  LABELS
+	TABLES,
+	LABELS
 };
