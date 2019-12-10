@@ -41,20 +41,17 @@ class Home extends React.Component {
 		);
 	}
 
-	renderLibraryBook(book, filterBook = "Geek Love") {
-		filterBook = filterBook.split(",");
+	renderLibraryBook(book) {
+		const filterBook = "Geek Love,Desert Solitaire".split(",");
 		const { name } = book;
 		return filterBook.includes(name) ? this.renderBook(book) : null;
-		// return filterBook.forEach(b =>
-		// 	name.includes(b) ? this.renderBook(book) : null
-		// );
 	}
 
 	renderMostReadBooks() {
 		return (
 			<div className="bookShelf">
 				{this.state.libraryBooks.map(book => {
-					return this.renderLibraryBook(book, "Geek Love,Desert Solitaire");
+					return this.renderLibraryBook(book);
 				})}
 			</div>
 		);
@@ -65,12 +62,12 @@ class Home extends React.Component {
 			<div className="homeScreenOptions">
 				<h3 className="header">{LIBRARY_HEADER}</h3>
 				<div className="hometext">{LIBRARYINFO}</div>
-				<div className="hometext">
+				<h3 className="hometext">
 					{TOTAL}
 					{this.state.libraryBooks.length}
-				</div>
+				</h3>
 				<div className="bookWrapper">
-					<p className="searchHeader">{MOST_READ_BOOKS}</p>
+					<p className="mostReadBooks">{MOST_READ_BOOKS}</p>
 					{this.renderMostReadBooks()}
 				</div>
 				<div className="loginOptionContainer">

@@ -33,6 +33,17 @@ body {
   margin: 0 40px;
 }
 
+.mostReadBooks {
+  color: #000;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  margin: 0 40px;
+  font-size: 30px;
+}
+
 .loginOptionContainer {
   display: flex;
   justify-content: center;
